@@ -4,8 +4,8 @@ from supabase import create_client, Client
 from dotenv import load_dotenv
 
 load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_sERVICE_ROLE_KEY")
+SUPABASE_URL = os.getenv("SUPABASE_URL") # TODO: Change URL
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY") # Change Key
 TABLE_NAME = os.getenv("SUPABASE_TABLE", "patches")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
