@@ -2,7 +2,7 @@
 
 **Hackathon UTEP 2025**
 
-Web-based platform to address an AI-driven solution to optimize patch scheduling in regulated OT environments for El Paso Electric.  
+Web-based platform to address an AI-driven solution to optimize patch scheduling in regulated OT environments for El Paso Electric Company.  
 Uses a decision tree model to predict patch priority and a REST API to provide recommendations.
 
 ## Team
