@@ -15,4 +15,8 @@ Synthetic data is used to simulate system status and patching conditions.
 ## Architecture
 - Decision Tree AI model
 - REST API (Python/Flask or FastAPI)
+<<<<<<< HEAD
 - Optional workflow automation with n8n
+=======
+- Optional workflow automation with n8n
+>>>>>>> 09839cb (Added tree decision model and data generator; updated README)
