@@ -25,5 +25,5 @@ model = DecisionTreeClassifier(max_depth=5, random_state=42)
 model.fit(X_train, y_train)
 
 # Save model
-joblib.dump(model, "model/model.pkl")
+joblib.dump(model, "ai_model/model.pkl")
 print("Model trained and saved as model/model.pkl")
