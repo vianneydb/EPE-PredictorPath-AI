@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPE Patch Priority Predictor</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background-color: #f8f9fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .results-section {
+      padding: 40px 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">EPE Predictor</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Docs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display-3 fw-bold">EPE Patch Priority Predictor</h1>
+    <h3 class="fw-normal text-muted mb-4">Upload your system data and get patch priorities</h3>
+    
+    <!-- Upload form -->
+    <form id="upload-form" class="mx-auto" style="max-width:600px;">
+      <div class="mb-3">
+        <label for="csvFile" class="form-label">Upload CSV file</label>
+        <input class="form-control" type="file" id="csvFile" accept=".csv,.tsv">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="predict()">Predict</button>
+    </form>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="results-section">
+  <div class="container">
+    <h2 class="mb-4">Prediction Results</h2>
+    <table class="table table-striped" id="results-table">
+      <thead>
+        <tr>
+          <th>System ID</th>
+          <th>Patch Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS llenará los resultados -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+  <div class="container text-center">
+    <small>&copy; 2025 EPE Predictor. All rights reserved.</small>
+  </div>
+</footer>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JS placeholder -->
+<script>
+  function predict() {
+    const fileInput = document.getElementById('csvFile');
+    if (!fileInput.files.length) {
+      alert('Please upload a CSV file.');
+      return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      const text = e.target.result;
+      const rows = text.split('\n').slice(1); // remove header
+      const tableBody = document.querySelector('#results-table tbody');
+      tableBody.innerHTML = ''; // clear previous results
+
+      rows.forEach(row => {
+        if (!row.trim()) return;
+        const cols = row.split(',');
+        const systemId = cols[0];
+        const patchPriority = cols[cols.length - 1]; // assuming last column
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${systemId}</td><td>${patchPriority}</td>`;
+        tableBody.appendChild(tr);
+      });
+    };
+    
+    reader.readAsText(file);
+  }
+</script>
+
+</body>
+</html>
