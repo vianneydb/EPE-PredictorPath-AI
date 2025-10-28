@@ -53,11 +53,16 @@ Synthetic data is used to simulate system status and patching conditions.
     ```
 
 5. Install dependencies:
+   Windows users:
    ```bash
-   pip install -r requirements_mac.txt
+   pip install -r requirements_windows.txt
+    ```
+   macOS users:
+   ```bash
+   pip install -r requirements_os.txt
     ```
 
-6. Run API:
+7. Run API:
    ```bash
    uvicorn app:app --reload
     ```
