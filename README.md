@@ -29,30 +29,47 @@ Synthetic data is used to simulate system status and patching conditions.
 
 ## Execution
 
-### Online
-Visit the website: [EPE Predictor Web Demo](https://vianneydb.github.io/EPE-PredictorPath-AI/)  
-Upload a CSV file to get predicted patch priorities.
-
 ### Local
 1. Clone the repository:
    ```bash
    git clone https://github.com/vianneydb/EPE-PredictorPath-AI.git
    cd EPE-PredictorPath-AI
     ```
+   
+2. Create a virtual environment:
+   ```bash
+   python3.11 -m venv venv
+   source venv/bin/activate
+    ```
 
-2. Generate synthetic data:
+3. Generate synthetic data:
    ```bash
    python data_generator.py
     ```
 
-3. Train the model:
+4. Train the model:
    ```bash
    python train_model.py
     ```
 
-4. Open the web demo:
+5. Install dependencies:
    ```bash
-   open app/index.html, or double-click the file in your file browser
+   pip install -r requirements_mac.txt
     ```
+
+6. Run API:
+   ```bash
+   uvicorn app:app --reload
+    ```
+
+6. Open in your browser:
+   ```bash
+   http://127.0.0.1:8000
+    ```
+### Online
+⚠️ **Under development**
+Visit the website: [EPE Predictor Web Demo](https://vianneydb.github.io/EPE-PredictorPath-AI/)  
+Upload a CSV file to get predicted patch priorities.
+
 
 **Date**: October 2025.
